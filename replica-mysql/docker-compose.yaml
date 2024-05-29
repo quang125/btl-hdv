@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  db_master:
+    image: mysql:latest
+    container_name: mysql_master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: quang123
+      MYSQL_DATABASE: new_db
+    ports:
+      - "1007:3306" 
+    volumes:
+      - ./data_master:/var/lib/mysql
+
+  db_slave_1:
+    image: mysql:latest
+    container_name: mysql_slave_1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: quang123
+      MYSQL_DATABASE: new_db
+    ports:
+      - "1008:3306"  
+    volumes:
+      - ./data_slave_1:/var/lib/mysql
+
+  db_slave_2:
+    image: mysql:latest
+    container_name: mysql_slave_2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: quang123
+      MYSQL_DATABASE: new_db
+    ports:
+      - "1009:3306"  
+    volumes:
+      - ./data_slave_2:/var/lib/mysql
+
+  db_slave_3:
+    image: mysql:latest
+    container_name: mysql_slave_3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: quang123
+      MYSQL_DATABASE: new_db
+    ports:
+      - "1010:3306"  
+    volumes:
+      - ./data_slave_3:/var/lib/mysql

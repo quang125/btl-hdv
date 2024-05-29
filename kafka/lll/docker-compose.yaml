@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: quang123
+      MYSQL_DATABASE: hdv
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      - my-network
+
+  app1:
+    image: service1
+    container_name: app1
+    ports:
+      - "8081:8081"
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hdvvv
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: quang123
+    networks:
+      - my-network
+
+  app2:
+    image: service2
+    container_name: app2
+    ports:
+      - "8082:8082"
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hdvv
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: quang123
+    networks:
+      - my-network
+
+  app3:
+    image: service3
+    container_name: app3
+    ports:
+      - "8083:8083"
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hdv
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: quang123
+    networks:
+      - my-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+      - app3
+    restart: always
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true

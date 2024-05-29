@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-hub-k8s-demo-deployment-2
+  labels:
+    app: docker-k8s-service-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-k8s-service-2
+  template:
+    metadata:
+      labels:
+        app: docker-k8s-service-2
+    spec:
+      containers:
+        - name: docker-k8s-service-2
+          image: quang227296/service-2-hub
+          ports:
+            - containerPort: 8082

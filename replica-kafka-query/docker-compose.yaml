@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app1:
+    image: query1
+    ports:
+      - "6061:6061"
+
+  app2:
+    image: query2
+    ports:
+      - "5051:5051"
+
+  app3:
+    image: query3
+    ports:
+      - "4041:4041"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-query
+    ports:
+      - "82:82"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+      - app3
+    restart: always
