@@ -1,36 +1,6 @@
 # Phát triển phần mềm hướng dịch vụ:
 Chủ đề :  Tìm hiểu, cài đặt, tích hợp và đánh giá một số công cụ/công nghệ nâng cao trong phát triển phần mềm hướng dịch vụ
 
-<table>
-  <tr>
-    <td style="text-align:center"><b>MSV</b></td>
-    <td style="text-align:center"><b>Họ và tên</b></td>
-  </tr>
-  <tr style="text-align: center">
-    <td>
-       <b>B20DCCN700</b>
-    </td>
-   <td>
-       <b>Vũ Quang Trung</b>
-    </td>
-  </tr>
-    <tr style="text-align: center">
-    <td>
-       <b>B20DCCN366</b>
-    </td>
-   <td>
-       <b>Nguyễn Quang Khải</b>
-    </td>
-  </tr>
-    <tr style="text-align: center">
-    <td>
-       <b>B20DCCN534</b>
-    </td>
-   <td>
-       <b>Nguyễn Ngọc Quang</b>
-    </td>
-  </tr>
-</table>
 
 # I) Các công nghệ/Công cụ tìm hiểu:
       - Containerization (Docker)
@@ -165,39 +135,3 @@ Nói tóm lại mô hình 2 giúp nâng cao hiệu năng, xử lý được các
 
 
 
-### 1. Containerization (Docker)
-Containerization là một phương pháp công nghệ cho phép đóng gói ứng dụng và tất cả các phụ thuộc của nó vào các container độc lập. Công nghệ containerization đã trở nên phổ biến và quan trọng trong phát triển phần mềm hiện đại vì khả năng tạo ra một môi trường cô lập và di động, giúp triển khai và vận hành các dịch vụ hướng dịch vụ (SOA - Service-Oriented Architecture) một cách linh hoạt và hiệu quả.
-#### - Docker
-Docker là một nền tảng containerization hàng đầu, cho phép các nhà phát triển đóng gói ứng dụng và các phụ thuộc của nó vào các container. Docker cung cấp một cách tiếp cận đơn giản và linh hoạt để xây dựng, vận chuyển và chạy các ứng dụng trong một môi trường cô lập.
-Đóng gói ứng dụng: Tạo Docker image chứa ứng dụng và các phụ thuộc của nó.
-Quản lý các container: Docker cho phép quản lý các container, bao gồm khởi chạy, dừng, xóa và tạo mới.
-Kết hợp với các công cụ khác: Docker có thể kết hợp với các công cụ như Docker Compose để quản lý nhiều container cùng một lúc.
-
-![alt text](image-1.png)
-
-
-### 2. Message Brokers (Kafka): 
-Message Brokers là một thành phần quan trọng trong việc xây dựng các hệ thống dịch vụ, cho phép các dịch vụ giao tiếp với nhau thông qua các thông điệp. Công nghệ như RabbitMQ và Apache Kafka cung cấp khả năng đảm bảo tính tin cậy, độ bền và khả năng mở rộng cho việc truyền tải và xử lý thông điệp. Message queue còn dùng để để hạn chế quá tải khi lượng truy cập tăng.
-
-RabbitMQ có mô hình pub/sub đơn giản và phù hợp với các tác vụ xử lý lâu hoặc background jobs.
-
-Kafka phức tạp hơn, to hơn phù hợp trong trường hợp cần xử lý high-throughput data streams.
-rabbitmq sinh ra để làm queue chạy background job, rabbitmq không mạnh trong việc đảm bảo thứ tự của message
-kafka sinh ra để stream, vì nó đảm bảo được thứ tự của các message
-
-### 3. Load Balancer 
-#### Trong một môi trường microservices, việc sử dụng load balancer là rất quan trọng để phân phối công việc và tăng tính khả dụng của hệ thống. Dưới đây là một số điểm quan trọng về load balancer trong microservices:
-Phân phối tải (Load Distribution): Load balancer giúp phân phối tải vào các instance của các dịch vụ microservices. Điều này giúp đảm bảo rằng không có một instance nào quá tải trong khi các instance khác có sẵn tài nguyên không sử dụng.
-Tăng tính khả dụng (High Availability): Bằng cách phân phối tải đồng đều và chuyển hướng yêu cầu đến các instance khác nhau, load balancer giúp tăng cường tính khả dụng của hệ thống. Nếu một instance gặp sự cố, load balancer có thể chuyển hướng lưu lượng đến các instance khác.
-Tích hợp khả năng mở rộng: Load balancer thường hỗ trợ khả năng mở rộng nhanh chóng và linh hoạt. Khi số lượng instance tăng lên hoặc giảm đi, load balancer có thể tự động điều chỉnh để phản ánh sự thay đổi này.
-Chuyển hướng yêu cầu dựa trên quy tắc: Load balancer có thể được cấu hình để chuyển hướng yêu cầu dựa trên các quy tắc nhất định, chẳng hạn như phân chia yêu cầu dựa trên phần trăm, điều hướng yêu cầu dựa trên địa chỉ IP nguồn, hoặc điều hướng yêu cầu dựa trên loại yêu cầu.
-TLS Termination: Load balancer thường hỗ trợ chấm dứt TLS, giúp giảm bớt công việc xử lý mã hóa từ các service instances và tăng hiệu suất.
-#### NGINX: Nginx là một lựa chọn phổ biến và mạnh mẽ cho việc triển khai cân bằng tải và proxy trong các ứng dụng web và microservices, nhờ vào hiệu suất cao, tính linh hoạt và khả năng mở rộng tốt.
-Hiệu suất cao: Nginx được thiết kế để xử lý hàng ngàn kết nối đồng thời một cách hiệu quả, đặc biệt là trong môi trường có tải cao.
-Cân bằng tải: Nginx cung cấp khả năng cân bằng tải giữa các máy chủ backend, phân phối công việc và người dùng một cách cân đối và hiệu quả.
-Proxy ngược: Nginx có thể được sử dụng làm proxy ngược để bảo vệ các dịch vụ backend khỏi các cuộc tấn công trực tiếp từ internet và giúp ẩn đi cấu trúc backend.
-Dễ dàng cấu hình: Nginx có cấu trúc cấu hình linh hoạt và dễ dàng để tùy chỉnh và cấu hình theo nhu cầu cụ thể của ứng dụng.
-Hỗ trợ mở rộng và mô-đun: Nginx hỗ trợ cơ chế mở rộng bằng cách cho phép người dùng cài đặt các module mở rộng để mở rộng khả năng hoạt động của nó.
-Giảm tải cho máy chủ backend: Bằng cách đóng vai trò làm cân bằng tải và cache, Nginx giảm tải cho các máy chủ backend, cải thiện hiệu suất và độ tin cậy của hệ thống.
-
-![alt text](image-6.png)
