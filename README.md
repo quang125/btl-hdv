@@ -1,7 +1,6 @@
 # Phát triển phần mềm hướng dịch vụ:
 Chủ đề :  Tìm hiểu, cài đặt, tích hợp và đánh giá một số công cụ/công nghệ nâng cao trong phát triển phần mềm hướng dịch vụ
 
-
 # I) Các công nghệ/Công cụ tìm hiểu:
       - Containerization (Docker)
       - Message Brokers (Kafka)
@@ -10,7 +9,7 @@ Chủ đề :  Tìm hiểu, cài đặt, tích hợp và đánh giá một số 
 week2:
 ![alt text](img.png)
 week3:
-1. Áp dụng và đánh giá các thuật toán Load Balance:
+1. Áp dụng và đánh giá các thuật toán Load Balance (Apache JMeter/Java Spring/MySQL/Docker Container):
 
   Round robin:
   
